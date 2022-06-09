@@ -15,6 +15,21 @@ class bank_account:
         print("Balance: ", self.balance)
     def yield_interest(self):
         self.balance += self.balance*self.int_rate
+        @staticmethod
+    def overdrawn(balance, amount):
+        if ((balance - amount) < 0):
+            return False
+        else:
+            return True
+    @classmethod
+    def change_bank_name(cls, name):
+        cls.bank_name = name
+    @classmethod
+    def all_balances(cls):
+        sum = 0
+        for account in cls.all_accounts:
+            sum += account.balance
+        return sum 
 
 account_1 = bank_account(0.03, 5000)
 account_2 = bank_account(0.05, 20)
